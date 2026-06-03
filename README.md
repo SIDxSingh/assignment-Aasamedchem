@@ -119,7 +119,7 @@ Details table representing individual line-items inside an order.
 
 We support conversions within weight and volume dimensions. Count dimensions do not convert and only support the base unit.
 
-### I HAVE STRICTLY USED NUMERIC(x,y); Where x is the number of Digits and y is number of digits after decimal
+🔑🔑🔑### I HAVE STRICTLY USED NUMERIC(x,y); Where x is the number of Digits and y is number of digits after decimal
 
 ### Supported Conversions
 - **Weight**: Base `g`, conversion unit `kg` ($1\text{ kg} = 1000\text{ g}$)
