@@ -70,7 +70,7 @@ AasaMedChem is a full-stack inventory and order management system designed for c
 
 We support conversions within weight and volume dimensions. Count dimensions do not convert and only support the base unit.
 
-🔑🔑🔑I STRICTLY USED **NUMERIC(X,Y)** FOR QUANTITY AND PRICE FIELDS, WHERE X IS THE TOTAL NUMBER OF DIGITS AND Y IS THE NUMBER OF DIGITS AFTER THE DECIMAL. THIS ENSURES ACCURATE CALCULATIONS AND ELIMINATES ROUNDING ERRORS
+🔑🔑🔑I have strictly used **NUMERIC(X,Y)**, where `x` is the total number of digits and `y` is the number of digits after the decimal. This ensures accurate calculations and prevents rounding errors.
 
 ### Supported Conversions
 - **Weight**: Base `g`, conversion unit `kg` ($1\text{ kg} = 1000\text{ g}$)
