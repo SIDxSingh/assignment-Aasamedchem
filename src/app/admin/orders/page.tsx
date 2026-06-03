@@ -138,7 +138,7 @@ export default function AdminOrdersPage() {
               <thead>
                 <tr className="border-b border-slate-100 bg-slate-50 text-slate-600 text-xs font-semibold uppercase tracking-wider">
                   <th className="py-3 px-6 w-10"></th>
-                  <th className="py-3 px-6">Order ID</th>
+                  <th className="py-3 px-6">Seller Email</th>
                   <th className="py-3 px-6">Seller Name</th>
                   <th className="py-3 px-6">Date</th>
                   <th className="py-3 px-6 text-center">Status</th>
@@ -171,7 +171,7 @@ export default function AdminOrdersPage() {
                           {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                         </td>
                         <td className="py-4 px-6 font-mono text-xs font-semibold text-slate-950">
-                          {order.id.slice(0, 8)}...
+                          {order.seller?.email || 'N/A'}
                         </td>
                         <td className="py-4 px-6 text-slate-900 font-medium">
                           {order.seller?.name || 'Unknown'}
