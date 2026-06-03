@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { signIn } from 'next-auth/react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -66,10 +67,16 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-900 via-slate-850 to-slate-950 px-4">
       <div className="w-full max-w-md">
         <Card className="border-slate-800 bg-slate-900/90 text-white shadow-2xl backdrop-blur-md">
-          <CardHeader className="space-y-1 text-center">
-            <CardTitle className="text-2xl font-bold tracking-tight text-white">
-              AasaMedChem Inventory System
-            </CardTitle>
+          <CardHeader className="space-y-2 text-center flex flex-col items-center">
+            <div className="relative w-72 h-20 mb-2">
+              <Image
+                src="/logo.png"
+                alt="AasaMedChem Logo"
+                fill
+                priority
+                className="object-contain"
+              />
+            </div>
             <CardDescription className="text-slate-400">
               Sign in to manage inventory & orders
             </CardDescription>
