@@ -186,15 +186,24 @@ Open [http://localhost:3000](http://localhost:3000).
 ---
 ---
 
-## 🖥️ User Panel Workflows
+## 🖥️ User Panel Workflows & Screenshots
+
+### Authentication Screen
+![Login Page](SCREENSHOTS/LOGINPAGE.png)
 
 ### Admin Panel (`/admin/*`)
 1. **Dashboard**: Access `/admin/dashboard` to view statistics on products count, low stock warnings, pending approvals, and total revenue.
+   ![Admin Dashboard](SCREENSHOTS/ADMIN%20DASHBOARD.png)
 2. **Products CRUD**: Access `/admin/products` to create new products. Enter prices in ₹, which the API automatically converts to paise. Toggle edit details, or press delete to soft-delete items (sets `isActive=false`). View scaled unit pricing for compatible dimensions.
+   ![Admin Product Management](SCREENSHOTS/ADMINMANAGEMENT.png)
 3. **Order Approvals**: Go to `/admin/orders` to see all orders. Click on any row to expand details, inspect the conversions applied to each line item, and click **Confirm**, **Reject**, or **Fulfill**. Rejecting an order automatically rolls back the allocated inventory to the products table.
+   ![Admin Order Approval](SCREENSHOTS/ADMITAPPROVAL.png)
 
 ### Seller Panel (`/seller/*`)
 1. **Product Browsing**: Access `/seller/products` to search items or filter by category and dimension. Configure custom units (e.g. `kg` or `L`) and quantities on any product card, watch the live total price estimate update, and click **Add to Cart**.
+   ![Seller Catalog Dashboard](SCREENSHOTS/sellerdashboard.png)
 2. **Shopping Cart**: Go to `/seller/cart` to inspect added items. Edit quantities inside the input table or remove rows. Write custom requisition notes, and click **Place Order** to deduct inventory and submit the request.
+   ![Seller Cart Checkout](SCREENSHOTS/seller%20karts.png)
 3. **Orders History**: View the status of placed requisitions (Pending, Confirmed, Fulfilled, Rejected) at `/seller/orders` with full expandable breakdown.
+   ![Seller Order History](SCREENSHOTS/seller%20order.png)
 
