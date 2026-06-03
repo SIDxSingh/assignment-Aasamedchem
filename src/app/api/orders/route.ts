@@ -76,79 +76,74 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Cart is empty' }, { status: 400 });
     }
 
-    // Process order in a transaction
-    const newOrder = await db.transaction(async (tx) => {
-      let totalAmountPaise = 0;
-      const orderItemsToInsert = [];
+    let totalAmountPaise = 0;
+    const orderItemsToInsert = [];
 
-      for (const item of items) {
-        // Fetch product
-        const [product] = await tx
-          .select()
-          .from(products)
-          .where(eq(products.id, item.productId))
-          .limit(1);
+    for (const item of items) {
+      // Fetch product
+      const [product] = await db
+        .select()
+        .from(products)
+        .where(eq(products.id, item.productId))
+        .limit(1);
 
-        if (!product || !product.isActive) {
-          throw new Error(`Product not found or inactive: ID ${item.productId}`);
-        }
-
-        // Calculate base quantity
-        const baseQty = toBaseUnit(item.orderedQuantity, item.orderedUnit);
-        const currentStock = parseFloat(product.stockQuantity);
-
-        // Check stock availability
-        if (currentStock < baseQty) {
-          throw new Error(`Insufficient stock for ${product.name}. Requested: ${item.orderedQuantity} ${item.orderedUnit} (${baseQty} ${product.baseUnit}), Available: ${currentStock} ${product.baseUnit}`);
-        }
-
-        // Calculate unit price per ordered unit
-        const basePrice = parseFloat(product.basePrice);
-        const unitPrice = getPriceInUnit(basePrice, item.orderedUnit);
-        const lineTotal = item.orderedQuantity * unitPrice;
-
-        totalAmountPaise += lineTotal;
-
-        // Deduct stock from product
-        const newStock = (currentStock - baseQty).toString();
-        await tx
-          .update(products)
-          .set({ stockQuantity: newStock, updatedAt: new Date() })
-          .where(eq(products.id, product.id));
-
-        orderItemsToInsert.push({
-          productId: product.id,
-          orderedUnit: item.orderedUnit,
-          orderedQuantity: item.orderedQuantity.toString(),
-          baseQuantity: baseQty.toString(),
-          unitPrice: unitPrice.toString(),
-          lineTotal: lineTotal.toString(),
-        });
+      if (!product || !product.isActive) {
+        return NextResponse.json({ error: `Product not found or inactive: ID ${item.productId}` }, { status: 404 });
       }
 
-      // Insert Order
-      const [insertedOrder] = await tx
-        .insert(orders)
-        .values({
-          sellerId: session.user.id,
-          status: 'PENDING',
-          totalAmount: totalAmountPaise.toString(),
-          notes: notes || null,
-        })
-        .returning();
+      // Calculate base quantity
+      const baseQty = toBaseUnit(item.orderedQuantity, item.orderedUnit);
+      const currentStock = parseFloat(product.stockQuantity);
 
-      // Insert Order Items
-      for (const orderItem of orderItemsToInsert) {
-        await tx.insert(orderItems).values({
-          orderId: insertedOrder.id,
-          ...orderItem,
-        });
+      // Check stock availability
+      if (currentStock < baseQty) {
+        return NextResponse.json({ error: `Insufficient stock for ${product.name}. Requested: ${item.orderedQuantity} ${item.orderedUnit} (${baseQty} ${product.baseUnit}), Available: ${currentStock} ${product.baseUnit}` }, { status: 400 });
       }
 
-      return insertedOrder;
-    });
+      // Calculate unit price per ordered unit
+      const basePrice = parseFloat(product.basePrice);
+      const unitPrice = getPriceInUnit(basePrice, item.orderedUnit);
+      const lineTotal = item.orderedQuantity * unitPrice;
 
-    return NextResponse.json(newOrder);
+      totalAmountPaise += lineTotal;
+
+      // Deduct stock from product
+      const newStock = (currentStock - baseQty).toString();
+      await db
+        .update(products)
+        .set({ stockQuantity: newStock, updatedAt: new Date() })
+        .where(eq(products.id, product.id));
+
+      orderItemsToInsert.push({
+        productId: product.id,
+        orderedUnit: item.orderedUnit,
+        orderedQuantity: item.orderedQuantity.toString(),
+        baseQuantity: baseQty.toString(),
+        unitPrice: unitPrice.toString(),
+        lineTotal: lineTotal.toString(),
+      });
+    }
+
+    // Insert Order
+    const [insertedOrder] = await db
+      .insert(orders)
+      .values({
+        sellerId: session.user.id,
+        status: 'PENDING',
+        totalAmount: totalAmountPaise.toString(),
+        notes: notes || null,
+      })
+      .returning();
+
+    // Insert Order Items
+    for (const orderItem of orderItemsToInsert) {
+      await db.insert(orderItems).values({
+        orderId: insertedOrder.id,
+        ...orderItem,
+      });
+    }
+
+    return NextResponse.json(insertedOrder);
   } catch (error: any) {
     console.error('Error placing order:', error);
     return NextResponse.json({ error: error.message }, { status: 400 });
