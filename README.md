@@ -66,6 +66,30 @@ AasaMedChem is a full-stack inventory and order management system designed for c
 
 ---
 
+## ⚖️ Unit Conversion Strategy
+
+We support conversions within weight and volume dimensions. Count dimensions do not convert and only support the base unit.
+
+🔑🔑🔑***I HAVE STRICTLY USED NUMERIC(x,y); Where x is the number of digits and y is number of digits after decimal**
+
+### Supported Conversions
+- **Weight**: Base `g`, conversion unit `kg` ($1\text{ kg} = 1000\text{ g}$)
+- **Volume**: Base `mL`, conversion unit `L` ($1\text{ L} = 1000\text{ mL}$)
+- **Count**: Base `unit` only
+
+### Mathematical Formulas
+The conversion factors are managed inside `src/lib/units.ts`:
+- **Quantity to Base Unit**: `baseQuantity = orderedQuantity * conversionFactor`
+- **Quantity from Base Unit**: `displayQuantity = baseQuantity / conversionFactor`
+- **Pricing scale**: `unitPrice = basePricePerBaseUnit * conversionFactor`
+- **Rupee formatting**: `rupees = paise / 100`
+
+> **Note on Price Storage**: Prices are stored in **INR Paise** as `NUMERIC(20,6)` internally. They are converted to Rupees ($\text{Rupees} = \text{Paise} / 100$) before being formatted for client display (e.g. `₹1,234.56`).
+
+---
+
+##
+
 ## 🗄️ Database Schema & Reasoning
 
 We utilize **PostgreSQL** on Neon Serverless. To ensure absolute numeric accuracy and avoid floating-point rounding errors (which are critical in commercial financial and stock systems), we store all prices and quantities using `NUMERIC(20,6)`.
@@ -116,29 +140,7 @@ Details table representing individual line-items inside an order.
 
 ---
 
-## ⚖️ Unit Conversion Strategy
-
-We support conversions within weight and volume dimensions. Count dimensions do not convert and only support the base unit.
-
-🔑🔑🔑### I HAVE STRICTLY USED NUMERIC(x,y); Where x is the number of Digits and y is number of digits after decimal
-
-### Supported Conversions
-- **Weight**: Base `g`, conversion unit `kg` ($1\text{ kg} = 1000\text{ g}$)
-- **Volume**: Base `mL`, conversion unit `L` ($1\text{ L} = 1000\text{ mL}$)
-- **Count**: Base `unit` only
-
-### Mathematical Formulas
-The conversion factors are managed inside `src/lib/units.ts`:
-- **Quantity to Base Unit**: `baseQuantity = orderedQuantity * conversionFactor`
-- **Quantity from Base Unit**: `displayQuantity = baseQuantity / conversionFactor`
-- **Pricing scale**: `unitPrice = basePricePerBaseUnit * conversionFactor`
-- **Rupee formatting**: `rupees = paise / 100`
-
-> **Note on Price Storage**: Prices are stored in **INR Paise** as `NUMERIC(20,6)` internally. They are converted to Rupees ($\text{Rupees} = \text{Paise} / 100$) before being formatted for client display (e.g. `₹1,234.56`).
-
----
-
-## 🛠️ Local Setup Instructions
+ 🛠️ Local Setup Instructions
 
 ### 1. Clone & Install Dependencies
 ```bash
