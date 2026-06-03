@@ -1,7 +1,8 @@
 # AasaMedChem Inventory & Order Management System
 
 **Live Demo URL**: [https://assignment-aasamedchem.vercel.app]
-A production-ready, enterprise-grade Inventory and Order Management System designed with real-time stock levels, dynamic unit conversions, and secure role-based authorization.
+
+AasaMedChem is a full-stack inventory and order management system designed for chemical and pharmaceutical businesses. It uses Role-Based Access Control (RBAC) with Admin and Seller roles, enabling secure inventory management, order processing, real-time stock tracking, and dynamic unit conversions. The project demonstrates full-stack development, authentication, database management, and real-world business workflow automation
 
 ## 🔑 Test Login Credentials
 - **Admin**: `siddharthwizard123@gmail.com` / `Sid@2003`
