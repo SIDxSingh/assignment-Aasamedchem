@@ -3,6 +3,9 @@
 **Live Demo URL**: [https://assignment-aasamedchem.vercel.app]
 A production-ready, enterprise-grade Inventory and Order Management System designed with real-time stock levels, dynamic unit conversions, and secure role-based authorization.
 
+## 🔑 Test Login Credentials
+- **Admin**: `siddharthwizard123@gmail.com` / `Sid@2003`
+- **Seller**: `sidsez@gmail.com` / `Sid@2003`
 ---
 
 ## 🚀 Tech Stack
@@ -171,12 +174,16 @@ Open [http://localhost:3000](http://localhost:3000).
    - `NEXTAUTH_URL` (points to production domain, e.g. `https://your-app.vercel.app`)
 4. Deploy the application. The project builds automatically.
 
+
+
+
 ---
 
 ## 🔑 Test Login Credentials
 - **Admin**: `siddharthwizard123@gmail.com` / `Sid@2003`
 - **Seller**: `sidsez@gmail.com` / `Sid@2003`
 
+---
 ---
 
 ## 🖥️ User Panel Workflows
