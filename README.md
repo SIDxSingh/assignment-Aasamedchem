@@ -176,7 +176,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## 🔑 Test Login Credentials
 - **Admin**: `siddharthwizard123@gmail.com` / `Sid@2003`
-- **Seller**: `seller@aasa.com` / `seller123`
+- **Seller**: `sidsez@gmail.com` / `Sid@2003`
 
 ---
 
