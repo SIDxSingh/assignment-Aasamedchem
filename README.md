@@ -189,7 +189,7 @@ Open [http://localhost:3000](http://localhost:3000).
 ## 🖥️ User Panel Workflows & Screenshots
 
 ### Authentication Screen
-![Login Page](SCREENSHOTS/LOGINPAGE.png)
+![Login Page](SCREENSHOTS/LOGINPAGE.png?v=2)
 
 ### Admin Panel (`/admin/*`)
 1. **Dashboard**: Access `/admin/dashboard` to view statistics on products count, low stock warnings, pending approvals, and total revenue.
