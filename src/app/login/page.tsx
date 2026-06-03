@@ -137,32 +137,6 @@ export default function LoginPage() {
             </CardFooter>
           </form>
         </Card>
-
-        {/* Demo Credentials Quick-Access Helper */}
-        <div className="mt-4 rounded-lg border border-slate-800 bg-slate-900/60 p-4 shadow-xl backdrop-blur-md">
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              type="button"
-              onClick={() => {
-                setEmail('siddharthwizard123@gmail.com');
-                setPassword('Sid@2003');
-              }}
-              className="flex flex-col items-center justify-center rounded border border-slate-800 bg-slate-950/80 p-3.5 text-xs font-semibold text-slate-300 hover:bg-slate-900 transition hover:text-white text-center"
-            >
-              Click to login as admin
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setEmail('sidsez@gmail.com');
-                setPassword('Sid@2003');
-              }}
-              className="flex flex-col items-center justify-center rounded border border-slate-800 bg-slate-950/80 p-3.5 text-xs font-semibold text-slate-300 hover:bg-slate-900 transition hover:text-white text-center"
-            >
-              Click to login as Seller
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );
