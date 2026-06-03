@@ -122,7 +122,7 @@ export default function SellerProductsPage() {
     // Retrieve existing cart
     let cart: CartItem[] = [];
     try {
-      const savedCart = localStorage.getItem('aasa_cart');
+      const savedCart = localStorage.getItem('aasamedchem_cart');
       if (savedCart) cart = JSON.parse(savedCart);
     } catch (e) {
       cart = [];
@@ -150,7 +150,7 @@ export default function SellerProductsPage() {
       });
     }
 
-    localStorage.setItem('aasa_cart', JSON.stringify(cart));
+    localStorage.setItem('aasamedchem_cart', JSON.stringify(cart));
     window.dispatchEvent(new Event('cart-updated'));
 
     toast({

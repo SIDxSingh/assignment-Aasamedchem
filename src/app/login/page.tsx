@@ -68,7 +68,7 @@ export default function LoginPage() {
         <Card className="border-slate-800 bg-slate-900/90 text-white shadow-2xl backdrop-blur-md">
           <CardHeader className="space-y-1 text-center">
             <CardTitle className="text-2xl font-bold tracking-tight text-white">
-              Aasa Inventory System
+              AasaMedChem Inventory System
             </CardTitle>
             <CardDescription className="text-slate-400">
               Sign in to manage inventory & orders
@@ -93,7 +93,7 @@ export default function LoginPage() {
                     id="email"
                     type="email"
                     required
-                    placeholder="name@aasa.com"
+                    placeholder="name@aasamedchem.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-950 pl-10 pr-3 py-2 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent disabled:opacity-50"

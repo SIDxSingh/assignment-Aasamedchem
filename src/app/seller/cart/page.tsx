@@ -32,7 +32,7 @@ export default function SellerCartPage() {
   // Load cart from localStorage
   React.useEffect(() => {
     try {
-      const savedCart = localStorage.getItem('aasa_cart');
+      const savedCart = localStorage.getItem('aasamedchem_cart');
       if (savedCart) {
         setCartItems(JSON.parse(savedCart));
       }
@@ -55,14 +55,14 @@ export default function SellerCartPage() {
     });
 
     setCartItems(updated);
-    localStorage.setItem('aasa_cart', JSON.stringify(updated));
+    localStorage.setItem('aasamedchem_cart', JSON.stringify(updated));
     window.dispatchEvent(new Event('cart-updated'));
   };
 
   const removeItem = (itemId: string) => {
     const filtered = cartItems.filter((item) => item.id !== itemId);
     setCartItems(filtered);
-    localStorage.setItem('aasa_cart', JSON.stringify(filtered));
+    localStorage.setItem('aasamedchem_cart', JSON.stringify(filtered));
     window.dispatchEvent(new Event('cart-updated'));
     toast({
       title: 'Item Removed',
@@ -103,7 +103,7 @@ export default function SellerCartPage() {
       });
 
       // Clear Cart
-      localStorage.removeItem('aasa_cart');
+      localStorage.removeItem('aasamedchem_cart');
       window.dispatchEvent(new Event('cart-updated'));
       router.push('/seller/orders');
     } catch (err: any) {

@@ -6,7 +6,7 @@ import { Providers } from "@/components/providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Aasa Inventory & Order Management System",
+  title: "AasaMedChem Inventory & Order Management System",
   description: "Enterprise-grade Inventory and Order Management with real-time stock levels, live unit conversions, and secure role-based authorization.",
 };
 

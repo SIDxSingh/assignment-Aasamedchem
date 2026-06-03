@@ -17,7 +17,7 @@ export function Navbar() {
   // Sync cart count from localStorage for SELLER
   const updateCartCount = React.useCallback(() => {
     try {
-      const savedCart = localStorage.getItem('aasa_cart');
+      const savedCart = localStorage.getItem('aasamedchem_cart');
       if (savedCart) {
         const items = JSON.parse(savedCart);
         setCartCount(items.length);
@@ -72,7 +72,7 @@ export function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
               <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
-                Aasa Inventory
+                AasaMedChem Inventory
               </span>
               <Badge variant={isAdmin ? 'default' : 'secondary'} className="ml-2 font-mono">
                 {role}

@@ -1,4 +1,4 @@
-# Aasa Inventory & Order Management System
+# AasaMedChem Inventory & Order Management System
 
 **Live Demo URL**: [https://assignment-aasamedchem.vercel.app](https://assignment-aasamedchem.vercel.app)
 
