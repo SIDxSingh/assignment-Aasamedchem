@@ -67,7 +67,7 @@ export default function SellerCartPage() {
     toast({
       title: 'Item Removed',
       description: 'Item was removed from your cart.',
-      variant: 'info',
+      variant: 'default',
     });
   };
 

@@ -4,6 +4,7 @@ loadEnvConfig(process.cwd());
 
 import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
+import { sql, eq } from 'drizzle-orm';
 import * as schema from '@/lib/db/schema';
 import bcrypt from 'bcryptjs';
 
@@ -14,8 +15,8 @@ async function main() {
     throw new Error('DATABASE_URL is not defined in environment variables');
   }
 
-  const sql = neon(process.env.DATABASE_URL);
-  const db = drizzle(sql, { schema });
+  const client = neon(process.env.DATABASE_URL);
+  const db = drizzle(client, { schema });
 
   // 1. Recreate tables (DROP then CREATE)
   console.log('Dropping existing tables if any...');
