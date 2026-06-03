@@ -159,7 +159,7 @@ export default function LoginPage() {
               }}
               className="flex flex-col items-center justify-center rounded border border-slate-800 bg-slate-950/80 p-3.5 text-xs font-semibold text-slate-300 hover:bg-slate-900 transition hover:text-white text-center"
             >
-              Click to purchase
+              Click to login as Seller
             </button>
           </div>
         </div>
