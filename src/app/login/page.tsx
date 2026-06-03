@@ -137,6 +137,37 @@ export default function LoginPage() {
             </CardFooter>
           </form>
         </Card>
+
+        {/* Demo Credentials Quick-Access Helper */}
+        <div className="mt-4 rounded-lg border border-slate-800 bg-slate-900/60 p-4 text-sm text-slate-400 shadow-xl backdrop-blur-md">
+          <div className="font-semibold text-white mb-3 text-center text-xs uppercase tracking-wider">
+            Demo Credentials Helper (Click to Autofill)
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <button
+              type="button"
+              onClick={() => {
+                setEmail('siddharthwizard123@gmail.com');
+                setPassword('Sid@2003');
+              }}
+              className="flex flex-col items-center justify-center rounded border border-slate-800 bg-slate-950/80 p-2.5 text-xs text-slate-300 hover:bg-slate-900 transition hover:text-white"
+            >
+              <span className="font-semibold">Admin Account</span>
+              <span className="text-[10px] text-slate-500 font-mono mt-0.5 font-semibold">Click to Autofill</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setEmail('sidsez@gmail.com');
+                setPassword('Sid@2003');
+              }}
+              className="flex flex-col items-center justify-center rounded border border-slate-800 bg-slate-950/80 p-2.5 text-xs text-slate-300 hover:bg-slate-900 transition hover:text-white"
+            >
+              <span className="font-semibold">Seller Account</span>
+              <span className="text-[10px] text-slate-500 font-mono mt-0.5 font-semibold">Click to Autofill</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

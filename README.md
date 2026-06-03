@@ -1,7 +1,6 @@
 # AasaMedChem Inventory & Order Management System
 
-**Live Demo URL**: [https://assignment-aasamedchem.vercel.app](https://assignment-aasamedchem.vercel.app)
-
+**Live Demo URL**: [https://assignment-aasamedchem.vercel.app]
 A production-ready, enterprise-grade Inventory and Order Management System designed with real-time stock levels, dynamic unit conversions, and secure role-based authorization.
 
 ---
